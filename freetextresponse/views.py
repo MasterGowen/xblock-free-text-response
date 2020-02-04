@@ -17,9 +17,9 @@ from .models import MAX_RESPONSES
 
 #  pylint: disable=no-member
 class FreeTextResponseViewMixin(
-        EnforceDueDates,
-        XBlockFragmentBuilderMixin,
-        StudioEditableXBlockMixin,
+    EnforceDueDates,
+    XBlockFragmentBuilderMixin,
+    StudioEditableXBlockMixin,
 ):
     """
     Handle view logic for FreeTextResponse XBlock instances
@@ -117,28 +117,22 @@ class FreeTextResponseViewMixin(
         if self.weight == 0:
             result = ''
         elif self.score == 0.0:
-            result = "({})".format(
-                self.ungettext(
-                    "{weight} point possible",
-                    "{weight} points possible",
-                    self.weight,
-                ).format(
-                    weight=self.weight,
-                )
+            result = ("{weight} point possible" + "{weight} points possible" + str(self.weight)).format(
+                weight=self.weight,
             )
+
         else:
             scaled_score = self.score * self.weight
             # No trailing zero and no scientific notation
             score_string = ('%.15f' % scaled_score).rstrip('0').rstrip('.')
-            result = "({})".format(
-                self.ungettext(
-                    "{score_string}/{weight} point",
-                    "{score_string}/{weight} points",
-                    self.weight,
-                ).format(
-                    score_string=score_string,
-                    weight=self.weight,
-                )
+            result = "({})".format((
+                "{score_string}/{weight} point",
+                "{score_string}/{weight} points",
+                self.weight,
+            ).format(
+                score_string=score_string,
+                weight=self.weight,
+            )
             )
         return result
 
@@ -149,11 +143,11 @@ class FreeTextResponseViewMixin(
         """
         result = ''
         if self.max_attempts > 0:
-            result = self.ungettext(
-                'You have used {count_attempts} of {max_attempts} submission',
-                'You have used {count_attempts} of {max_attempts} submissions',
-                self.max_attempts,
-            ).format(
+            result =
+            ('You have used {count_attempts} of {max_attempts} submission' +
+             'You have used {count_attempts} of {max_attempts} submissions' +
+             self.max_attempts,
+             ).format(
                 count_attempts=self.count_attempts,
                 max_attempts=self.max_attempts,
             )
@@ -173,13 +167,12 @@ class FreeTextResponseViewMixin(
         """
         Returns the word count message
         """
-        result = self.ungettext(
-            "Your response must be "
-            "between {min} and {max} word.",
-            "Your response must be "
-            "between {min} and {max} words.",
-            self.max_word_count,
-        ).format(
+        result = ("Your response must be " +
+                  "between {min} and {max} word." +
+                  "Your response must be " +
+                  "between {min} and {max} words." +
+                  self.max_word_count,
+                  ).format(
             min=self.min_word_count,
             max=self.max_word_count,
         )
@@ -269,9 +262,7 @@ class FreeTextResponseViewMixin(
                 (not self._word_count_valid())
         ):
             word_count_message = self._get_word_count_message()
-            result = self.ugettext(
-                "Invalid Word Count. {word_count_message}"
-            ).format(
+            result = "Invalid Word Count. {word_count_message}".format(
                 word_count_message=word_count_message,
             )
         return result
@@ -313,9 +304,7 @@ class FreeTextResponseViewMixin(
         the supplied string
         """
         result = ValidationMessage(
-            ValidationMessage.ERROR,
-            self.ugettext(text_type(text))
-        )
+            ValidationMessage.ERROR, text_type(text))
         return result
 
     def validate_field_data(self, validation, data):
