@@ -11,14 +11,12 @@ from xblockutils.studio_editable import StudioEditableXBlockMixin
 
 from .mixins.dates import EnforceDueDates
 from .mixins.fragment import XBlockFragmentBuilderMixin
-from .mixins.i18n import I18nXBlockMixin
 from .models import Credit
 from .models import MAX_RESPONSES
 
 
 #  pylint: disable=no-member
 class FreeTextResponseViewMixin(
-        I18nXBlockMixin,
         EnforceDueDates,
         XBlockFragmentBuilderMixin,
         StudioEditableXBlockMixin,

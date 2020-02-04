@@ -72,7 +72,6 @@ class XBlockFragmentBuilderMixin(object):
             rendered_template = self.loader.render_django_template(
                 template,
                 context=context,
-                i18n_service=self.runtime.service(self, 'i18n'),
             )
         fragment = Fragment(rendered_template)
         for item in css:
