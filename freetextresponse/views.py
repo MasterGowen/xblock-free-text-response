@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 class FreeTextResponseViewMixin(
     EnforceDueDates,
     XBlockFragmentBuilderMixin,
-    # StudioEditableXBlockMixin,
+    StudioEditableXBlockMixin,
 ):
     """
     Handle view logic for FreeTextResponse XBlock instances
