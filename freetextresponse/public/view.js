@@ -16,7 +16,7 @@ function FreeTextResponseView(runtime, element) {
     var buttonHideTextHide = $('.hide', buttonHide);
     var buttonHideTextShow = $('.show', buttonHide);
     var buttonSubmit = $element.find('.check.Submit');
-    var buttonSave = $element.find('.save');
+    var buttonSave = $element.find('.save ');
     var usedAttemptsFeedback = $element.find('.action .used-attempts-feedback');
     var problemProgress = $element.find('.problem-progress');
     var submissionReceivedMessage = $element.find('.submission-received');
@@ -42,6 +42,7 @@ function FreeTextResponseView(runtime, element) {
         // eslint-disable-next-line prefer-rest-params, no-console
         console.log('POLYFILL runtime.notify', arguments);
     };
+    console.log(buttonSave);
 
     /**
      * Update CSS classes
