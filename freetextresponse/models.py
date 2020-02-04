@@ -5,14 +5,13 @@ from __future__ import absolute_import
 
 from enum import Enum
 from django.db import IntegrityError
-from django.utils.translation import ugettext_lazy as _
+# from django.utils.translation import ugettext_lazy as _
 from xblock.fields import Boolean
 from xblock.fields import Float
 from xblock.fields import Integer
 from xblock.fields import List
 from xblock.fields import Scope
 from xblock.fields import String
-
 
 MAX_RESPONSES = 3
 
@@ -38,122 +37,71 @@ class FreeTextResponseModelMixin(object):
     ]
 
     display_correctness = Boolean(
-        display_name=_('Display Correctness?'),
-        help=_(
-            'This is a flag that indicates if the indicator '
-            'icon should be displayed after a student enters '
-            'their response'
-        ),
+        display_name='Display Correctness?',
         default=True,
         scope=Scope.settings,
     )
     display_other_student_responses = Boolean(
-        display_name=_('Display Other Student Responses'),
-        help=_(
-            'This will display other student responses to the '
-            'student after they submit their response.'
-        ),
+        display_name='Display Other Student Responses',
         default=False,
         scope=Scope.settings,
     )
     displayable_answers = List(
         default=[],
         scope=Scope.user_state_summary,
-        help=_('System selected answers to give to students'),
     )
     display_name = String(
-        display_name=_('Display Name'),
-        help=_(
-            'This is the title for this question type'
-        ),
+        display_name='Display Name',
         default='Free-text Response',
         scope=Scope.settings,
     )
     fullcredit_keyphrases = List(
-        display_name=_('Full-Credit Key Phrases'),
-        help=_(
-            'This is a list of words or phrases, one of '
-            'which must be present in order for the student\'s answer '
-            'to receive full credit'
-        ),
+        display_name='Full-Credit Key Phrases',
         default=[],
         scope=Scope.settings,
     )
     halfcredit_keyphrases = List(
-        display_name=_('Half-Credit Key Phrases'),
-        help=_(
-            'This is a list of words or phrases, one of '
-            'which must be present in order for the student\'s answer '
-            'to receive half credit'
-        ),
+        display_name='Half-Credit Key Phrases',
         default=[],
         scope=Scope.settings,
     )
     max_attempts = Integer(
-        display_name=_('Maximum Number of Attempts'),
-        help=_(
-            'This is the maximum number of times a '
-            'student is allowed to attempt the problem'
-        ),
+        display_name='Maximum Number of Attempts',
         default=0,
         values={'min': 1},
         scope=Scope.settings,
     )
     max_word_count = Integer(
-        display_name=_('Maximum Word Count'),
-        help=_(
-            'This is the maximum number of words allowed for this '
-            'question'
-        ),
+        display_name='Maximum Word Count',
         default=10000,
         values={'min': 1},
         scope=Scope.settings,
     )
     min_word_count = Integer(
-        display_name=_('Minimum Word Count'),
-        help=_(
-            'This is the minimum number of words required '
-            'for this question'
-        ),
+        display_name='Minimum Word Count',
         default=1,
         values={'min': 1},
         scope=Scope.settings,
     )
     prompt = String(
-        display_name=_('Prompt'),
-        help=_(
-            'This is the prompt students will see when '
-            'asked to enter their response'
-        ),
+        display_name='Prompt',
         default='Please enter your response within this text area',
         scope=Scope.settings,
         multiline_editor=True,
     )
     submitted_message = String(
-        display_name=_('Submission Received Message'),
-        help=_(
-            'This is the message students will see upon '
-            'submitting their response'
-        ),
+        display_name='Submission Received Message',
         default='Your submission has been received',
         scope=Scope.settings,
     )
     weight = Integer(
-        display_name=_('Weight'),
-        help=_(
-            'This assigns an integer value representing '
-            'the weight of this problem'
-        ),
+        display_name='Weight',
         default=0,
         values={'min': 1},
         scope=Scope.settings,
     )
     saved_message = String(
-        display_name=_('Draft Received Message'),
-        help=_(
-            'This is the message students will see upon '
-            'submitting a draft response'
-        ),
+        display_name='Draft Received Message',
         default=(
             'Your answers have been saved but not graded. '
             'Click "Submit" to grade them.'
@@ -198,7 +146,7 @@ class FreeTextResponseModelMixin(object):
 
         # Want to store extra response so student can still see
         # MAX_RESPONSES answers if their answer is in the pool.
-        response_index = -(MAX_RESPONSES+1)
+        response_index = -(MAX_RESPONSES + 1)
         self.displayable_answers = self.displayable_answers[response_index:]
 
     def max_score(self):
