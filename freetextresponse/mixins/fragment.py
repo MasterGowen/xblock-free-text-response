@@ -20,7 +20,7 @@ class XBlockFragmentBuilderMixin(object):
     static_js = [
         'view.js',
     ]
-    static_js_init = None
+    static_js_init = 'FreeTextResponseView'
     template = 'view.html'
 
     def provide_context(self, context):  # pragma: no cover
