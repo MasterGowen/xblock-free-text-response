@@ -132,11 +132,13 @@ function FreeTextResponseView(runtime, element) {
     });
 
     buttonSave.on('click', function () {
+        console.log("click");
         buttonSave.text(buttonSave[0].dataset.checking);
         // runtime.notify('save', {
         //     message: 'Saving...',
         //     state: 'start',
         // });
+        console.log("go to ajax");
         $.ajax(urlSave, {
             type: 'POST',
             data: JSON.stringify({
