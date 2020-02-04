@@ -169,7 +169,7 @@ class FreeTextResponseViewMixin(
                   "between {min} and {max} word." +
                   "Your response must be " +
                   "between {min} and {max} words." +
-                  self.max_word_count,
+                  str(self.max_word_count),
                   ).format(
             min=self.min_word_count,
             max=self.max_word_count,
