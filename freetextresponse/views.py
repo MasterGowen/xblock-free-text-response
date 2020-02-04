@@ -14,6 +14,8 @@ from .mixins.fragment import XBlockFragmentBuilderMixin
 from .models import Credit
 from .models import MAX_RESPONSES
 
+from django.utils.encoding import smart_text
+
 logger = logging.getLogger(__name__)
 
 
@@ -206,8 +208,8 @@ class FreeTextResponseViewMixin(
         # Fails if the UI submit/save buttons were shut
         # down on the previous sumbisson
         if self._can_submit():
-            logger.warn(str(data['student_answer']))
-            self.student_answer = data['student_answer']
+            logger.warn(str(smart_text(data['student_answer'])))
+            self.student_answer = smart_text(data['student_answer'])
             # Counting the attempts and publishing a score
             # even if word count is invalid.
             self.count_attempts += 1
