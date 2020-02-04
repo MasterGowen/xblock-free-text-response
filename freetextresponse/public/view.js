@@ -5,7 +5,7 @@
  * @param {Object} element - The containing DOM element for this instance of the XBlock
  * @returns {undefined} nothing
  */
-function FreeTextResponseView1(runtime, element) {
+function FreeTextResponseView(runtime, element) {
     /* eslint-enable no-unused-vars */
     'use strict';
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');

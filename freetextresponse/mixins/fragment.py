@@ -85,6 +85,6 @@ class XBlockFragmentBuilderMixin(object):
             item = 'public/' + item
             url = self.runtime.local_resource_url(self, item)
             fragment.add_javascript_url(url)
-        if js_init:  # pragma: no cover
-            fragment.initialize_js(js_init)
+        # if js_init:  # pragma: no cover
+        fragment.initialize_js('FreeTextResponseView')
         return fragment
