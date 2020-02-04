@@ -208,7 +208,6 @@ class FreeTextResponseViewMixin(
         # Fails if the UI submit/save buttons were shut
         # down on the previous sumbisson
         if self._can_submit():
-            logger.warn(str(smart_text(data['student_answer'])))
             self.student_answer = smart_text(data['student_answer'])
             # Counting the attempts and publishing a score
             # even if word count is invalid.
