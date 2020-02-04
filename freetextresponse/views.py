@@ -2,7 +2,7 @@
 Handle view logic for the XBlock
 """
 from __future__ import absolute_import
-
+import logging
 from six import text_type
 from xblock.core import XBlock
 from xblock.validation import ValidationMessage
@@ -13,6 +13,8 @@ from .mixins.dates import EnforceDueDates
 from .mixins.fragment import XBlockFragmentBuilderMixin
 from .models import Credit
 from .models import MAX_RESPONSES
+
+logger = logging.getLogger(__name__)
 
 
 #  pylint: disable=no-member
@@ -204,6 +206,7 @@ class FreeTextResponseViewMixin(
         # Fails if the UI submit/save buttons were shut
         # down on the previous sumbisson
         if self._can_submit():
+            logger.warn(str(data['student_answer']))
             self.student_answer = data['student_answer']
             # Counting the attempts and publishing a score
             # even if word count is invalid.
@@ -287,13 +290,15 @@ class FreeTextResponseViewMixin(
         """
         Determine if a user may submit a response
         """
-        if self.is_past_due():
-            return False
-        if self.max_attempts == 0:
-            return True
-        if self.count_attempts < self.max_attempts:
-            return True
-        return False
+        return True
+
+        # if self.is_past_due():
+        #     return False
+        # if self.max_attempts == 0:
+        #     return True
+        # if self.count_attempts < self.max_attempts:
+        #     return True
+        # return False
 
     def _generate_validation_message(self, text):
         """
