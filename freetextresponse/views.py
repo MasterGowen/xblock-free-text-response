@@ -314,31 +314,33 @@ class FreeTextResponseViewMixin(
         """
         Validates settings entered by the instructor.
         """
-        if data.weight < 0:
-            msg = self._generate_validation_message(
-                'Weight Attempts cannot be negative'
-            )
-            validation.add(msg)
-        if data.max_attempts < 0:
-            msg = self._generate_validation_message(
-                'Maximum Attempts cannot be negative'
-            )
-            validation.add(msg)
-        if data.min_word_count < 1:
-            msg = self._generate_validation_message(
-                'Minimum Word Count cannot be less than 1'
-            )
-            validation.add(msg)
-        if data.min_word_count > data.max_word_count:
-            msg = self._generate_validation_message(
-                'Minimum Word Count cannot be greater than Max Word Count'
-            )
-            validation.add(msg)
-        if not data.submitted_message:
-            msg = self._generate_validation_message(
-                'Submission Received Message cannot be blank'
-            )
-            validation.add(msg)
+        pass
+
+        # if data.weight < 0:
+        #     msg = self._generate_validation_message(
+        #         'Weight Attempts cannot be negative'
+        #     )
+        #     validation.add(msg)
+        # if data.max_attempts < 0:
+        #     msg = self._generate_validation_message(
+        #         'Maximum Attempts cannot be negative'
+        #     )
+        #     validation.add(msg)
+        # if data.min_word_count < 1:
+        #     msg = self._generate_validation_message(
+        #         'Minimum Word Count cannot be less than 1'
+        #     )
+        #     validation.add(msg)
+        # if data.min_word_count > data.max_word_count:
+        #     msg = self._generate_validation_message(
+        #         'Minimum Word Count cannot be greater than Max Word Count'
+        #     )
+        #     validation.add(msg)
+        # if not data.submitted_message:
+        #     msg = self._generate_validation_message(
+        #         'Submission Received Message cannot be blank'
+        #     )
+        #     validation.add(msg)
 
 
 def _is_at_least_one_phrase_present(phrases, answer):
