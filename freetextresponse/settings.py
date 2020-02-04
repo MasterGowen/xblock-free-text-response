@@ -11,7 +11,9 @@ DATABASES = {
 INSTALLED_APPS = (
     'freetextresponse',
 )
-LOCALE_PATHS = [
-    'freetextresponse/translations',
-]
+# LOCALE_PATHS = [
+#     'freetextresponse/translations',
+# ]
+
+LOCALE_PATHS = []
 SECRET_KEY = 'SECRET_KEY'
