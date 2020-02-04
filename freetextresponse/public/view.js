@@ -93,10 +93,10 @@ function FreeTextResponseView(runtime, element) {
 
     buttonSubmit.on('click', function () {
         buttonSubmit.text(buttonSubmit[0].dataset.checking);
-        runtime.notify('submit', {
-            message: 'Submitting...',
-            state: 'start',
-        });
+        // runtime.notify('submit', {
+        //     message: 'Submitting...',
+        //     state: 'start',
+        // });
         $.ajax(url, {
             type: 'POST',
             data: JSON.stringify({
@@ -133,10 +133,10 @@ function FreeTextResponseView(runtime, element) {
 
     buttonSave.on('click', function () {
         buttonSave.text(buttonSave[0].dataset.checking);
-        runtime.notify('save', {
-            message: 'Saving...',
-            state: 'start',
-        });
+        // runtime.notify('save', {
+        //     message: 'Saving...',
+        //     state: 'start',
+        // });
         $.ajax(urlSave, {
             type: 'POST',
             data: JSON.stringify({
