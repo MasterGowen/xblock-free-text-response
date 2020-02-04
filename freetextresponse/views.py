@@ -147,7 +147,7 @@ class FreeTextResponseViewMixin(
         if self.max_attempts > 0:
             result = ('You have used {count_attempts} of {max_attempts} submission' +
                       'You have used {count_attempts} of {max_attempts} submissions' +
-                      self.max_attempts).format(
+                      str(self.max_attempts)).format(
                 count_attempts=self.count_attempts,
                 max_attempts=self.max_attempts,
             )
