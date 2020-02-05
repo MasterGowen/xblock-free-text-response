@@ -191,11 +191,11 @@ class FreeTextResponseViewMixin(
 
         Does not return answers the student had submitted.
         """
-        student_id = self.get_student_id()
-
-        display_other_responses = self.display_other_student_responses
-        shouldnt_show_other_responses = not display_other_responses
-        student_answer_incorrect = self._determine_credit() == Credit.zero
+        # student_id = self.get_student_id()
+        #
+        # display_other_responses = self.display_other_student_responses
+        # shouldnt_show_other_responses = not display_other_responses
+        # student_answer_incorrect = self._determine_credit() == Credit.zero
 
         # if student_answer_incorrect or shouldnt_show_other_responses:
         #     return []
