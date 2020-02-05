@@ -62,12 +62,14 @@ function FreeTextResponseView(runtime, element) {
      * @returns {string} a string of HTML to add to the page
      */
     function getStudentResponsesHtml(responses) {
+        console.log("get!Student!Responses!Html!!!!!!!!!!!!!!!!!!");
         var html = '';
         var noResponsesText = responseList.data('noresponse');
         responses.forEach(function (item) {
-            html += '<li class="other-student-responses">' + item.answer + '</li>';
+            html += '<tr class="other-student-responses"><td>' + item.email + '</td><td>' + item.answer + '</td></tr>';
         });
-        html = html || '<li class="no-response">' + noResponsesText + '</li>';
+        // html = html || '<li class="no-response">' + noResponsesText + '</li>';
+        html = html || '<tr class="other-student-responses"><td colspan="2">' + noResponsesText + '</td></tr>
         return html;
     }
 
@@ -77,10 +79,10 @@ function FreeTextResponseView(runtime, element) {
      * @returns {undefined} nothing
      */
     function displayResponsesIfAnswered(response) {
-        if (!response.display_other_responses) {
-            $element.find('.responses-box').addClass('hidden');
-            return;
-        }
+        // if (!response.display_other_responses) {
+        //     $element.find('.responses-box').addClass('hidden');
+        //     return;
+        // }
         var responseHTML = getStudentResponsesHtml(response.other_responses);
         responseList.html(responseHTML);
         $element.find('.responses-box').removeClass('hidden');
