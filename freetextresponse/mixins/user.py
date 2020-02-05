@@ -14,7 +14,8 @@ class MissingDataFetcherMixin(object):
         Get the student id.
         """
         if hasattr(self, 'xmodule_runtime'):
-            student_id = self.xmodule_runtime.anonymous_student_id
+            student_id = 'empty'
+                # self.xmodule_runtime.anonymous_student_id
             # pylint:disable=E1101
         else:
             student_id = self.scope_ids.user_id or ''
