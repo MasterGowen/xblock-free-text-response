@@ -43,7 +43,7 @@ class FreeTextResponseModelMixin(object):
     )
     display_other_student_responses = Boolean(
         display_name='Display Other Student Responses',
-        default=False,
+        default=True,
         scope=Scope.settings,
     )
     displayable_answers = List(
