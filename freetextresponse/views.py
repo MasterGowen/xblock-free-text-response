@@ -38,8 +38,10 @@ class FreeTextResponseViewMixin(
         """
         Build a context dictionary to render the student view
         """
-
-        user_is_admin = user_by_anonymous_id(self.get_student_id()).is_staff
+        if self.get_student_id() != "student":
+            user_is_admin = user_by_anonymous_id(self.get_student_id()).is_staff
+        else:
+            user_is_admin = True
 
         context = context or {}
         context = dict(context)

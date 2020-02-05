@@ -95,7 +95,7 @@ class XBlockFragmentBuilderMixin(object):
         Build the fragment for the default student view
         """
         template = self.template
-
+        context = self.provide_context(context)
         static_css = self.static_css or []
         static_js = self.static_js or []
         js_init = self.static_js_init
@@ -106,41 +106,4 @@ class XBlockFragmentBuilderMixin(object):
             js=static_js,
             js_init=js_init,
         )
-        return fragment
-
-    def build_fragment(
-            self,
-            template='',
-            context=None,
-            css=None,
-            js=None,
-            js_init=None,
-    ):
-        """
-        Creates a fragment for display.
-        """
-        context = {}
-        css = css or []
-        js = js or []
-        rendered_template = ''
-        if template:  # pragma: no cover
-            template = 'templates/' + template
-            rendered_template = self.loader.render_django_template(
-                template,
-                context=context,
-            )
-        fragment = Fragment(rendered_template)
-        for item in css:
-            if item.startswith('/'):
-                url = item
-            else:
-                item = 'public/' + item
-                url = self.runtime.local_resource_url(self, item)
-            fragment.add_css_url(url)
-        for item in js:
-            item = 'public/' + item
-            url = self.runtime.local_resource_url(self, item)
-            fragment.add_javascript_url(url)
-        # if js_init:  # pragma: no cover
-        fragment.initialize_js('FreeTextResponseView')
         return fragment
