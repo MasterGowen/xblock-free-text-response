@@ -69,7 +69,7 @@ class FreeTextResponseModelMixin(object):
     )
     max_attempts = Integer(
         display_name='Maximum Number of Attempts',
-        default=0,
+        default=1,
         values={'min': 1},
         scope=Scope.settings,
     )
@@ -81,7 +81,7 @@ class FreeTextResponseModelMixin(object):
     )
     min_word_count = Integer(
         display_name='Minimum Word Count',
-        default=1,
+        default=2,
         values={'min': 1},
         scope=Scope.settings,
     )
