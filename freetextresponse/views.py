@@ -190,15 +190,12 @@ class FreeTextResponseViewMixin(
         display_other_responses = self.display_other_student_responses
         shouldnt_show_other_responses = not display_other_responses
         student_answer_incorrect = self._determine_credit() == Credit.zero
-        if student_answer_incorrect or shouldnt_show_other_responses:
-            return []
 
-        return_list = [
-            response
-            for response in self.displayable_answers
-            if response['student_id'] != student_id
-        ]
-        return_list = return_list[-(MAX_RESPONSES):]
+        # if student_answer_incorrect or shouldnt_show_other_responses:
+        #     return []
+
+        return_list = self.displayable_answers
+        # return_list = return_list[-(MAX_RESPONSES):]
         return return_list
 
     @XBlock.json_handler
