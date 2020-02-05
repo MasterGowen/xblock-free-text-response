@@ -216,11 +216,10 @@ class FreeTextResponseViewMixin(
         # down on the previous sumbisson
         if self._can_submit():
             self.student_answer = smart_text(data['student_answer'])
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", self.student_answer)
             # Counting the attempts and publishing a score
             # even if word count is invalid.
-            # self.count_attempts += 1
-            self._compute_score()
+            self.count_attempts += 1
+            # self._compute_score()
             # display_other_responses = self.display_other_student_responses
             # if data.get('can_record_response'):
             self.store_student_response()
