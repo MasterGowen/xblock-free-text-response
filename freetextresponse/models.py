@@ -146,7 +146,7 @@ class FreeTextResponseModelMixin(object):
 
         self.displayable_answers.append({
             'student_id': student_id,
-            'student_email': student_email,
+            'student_email': student_email.email,
             'answer': self.student_answer,
         })
 
