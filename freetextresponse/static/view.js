@@ -69,7 +69,7 @@ function FreeTextResponseView(runtime, element) {
             html += '<tr class="other-student-responses"><td>' + item.email + '</td><td>' + item.answer + '</td></tr>';
         });
         // html = html || '<li class="no-response">' + noResponsesText + '</li>';
-        html = html || '<tr class="other-student-responses"><td colspan="2">' + noResponsesText + '</td></tr>
+        html = html || '<tr class="other-student-responses"><td colspan="2">' + noResponsesText + '</td></tr>';
         return html;
     }
 
