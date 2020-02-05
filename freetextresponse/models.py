@@ -142,8 +142,11 @@ class FreeTextResponseModelMixin(object):
                 del self.displayable_answers[index]
                 break
 
+        student_email = user_by_anonymous_id(student_id)
+
         self.displayable_answers.append({
             'student_id': student_id,
+            'student_email': student_email,
             'answer': self.student_answer,
         })
 
