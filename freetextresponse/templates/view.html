@@ -11,11 +11,6 @@
         </div>
     </div>
 
-    <div id="student_id_test">
-    {{ user_is_admin }}
-
-    </div>
-
 {#    {% if display_other_responses %}#}
 {#        <input class="messageCheckbox" type="checkbox" checked>#}
 {#            <span>{% trans "Allow my response to possibly be visible by other learners after submitting their response" %}</span>#}
@@ -34,7 +29,7 @@
         <div class="used-attempts-feedback" aria-live="polite">{{ used_attempts_feedback }}</div>
     </div>
     <div class="capa_alert user_alert">{{ user_alert }}</div>
-    {% if display_other_responses %}
+    {% if user_is_admin %}
         <div class="responses-box {% if not student_answer %}hidden{% endif %}">
             <button class="hide-button">
                 <span class="hide">{% trans "Hide" %}</span>
