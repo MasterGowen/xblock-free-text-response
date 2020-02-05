@@ -93,7 +93,7 @@ class FreeTextResponseModelMixin(object):
     )
     submitted_message = String(
         display_name='Submission Received Message',
-        default='Your submission has been received',
+        default='Благодарим за оставленный отзыв!',
         scope=Scope.settings,
     )
     weight = Integer(
