@@ -95,7 +95,7 @@ class XBlockFragmentBuilderMixin(object):
         Build the fragment for the default student view
         """
         template = self.template
-        context = self.provide_context(context)
+
         static_css = self.static_css or []
         static_js = self.static_js or []
         js_init = self.static_js_init
@@ -119,7 +119,7 @@ class XBlockFragmentBuilderMixin(object):
         """
         Creates a fragment for display.
         """
-        context = context or {}
+        context = {}
         css = css or []
         js = js or []
         rendered_template = ''
