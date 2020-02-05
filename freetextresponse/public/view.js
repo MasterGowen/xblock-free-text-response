@@ -66,10 +66,10 @@ function FreeTextResponseView(runtime, element) {
         var html = '';
         var noResponsesText = responseList.data('noresponse');
         responses.forEach(function (item) {
-            html += '<tr class="other-student-responses"><td>' + item.email + '</td><td>' + item.answer + '</td></tr>';
+            html += '<tr class=""><td>' + item.student_email + '</td><td>' + item.answer + '</td></tr>';
         });
         // html = html || '<li class="no-response">' + noResponsesText + '</li>';
-        html = html || '<tr class="other-student-responses"><td colspan="2">' + noResponsesText + '</td></tr>';
+        html = html || '<tr class=""><td colspan="2">' + noResponsesText + '</td></tr>';
         return html;
     }
 
