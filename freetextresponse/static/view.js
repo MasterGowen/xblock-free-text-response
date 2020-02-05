@@ -105,7 +105,7 @@ function FreeTextResponseView(runtime, element) {
                 // eslint-disable-next-line camelcase
                 student_answer: $element.find('.student_answer').val(),
                 // eslint-disable-next-line camelcase
-                can_record_response: $element.find('.messageCheckbox').prop('checked'),
+                // can_record_response: $element.find('.messageCheckbox').prop('checked'),
             }),
             success: function buttonSubmitOnSuccess(response) {
                 usedAttemptsFeedback.text(response.used_attempts_feedback);
