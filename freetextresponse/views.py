@@ -16,6 +16,8 @@ from .models import MAX_RESPONSES
 
 from django.utils.encoding import smart_text
 
+from student.models import CourseEnrollment, user_by_anonymous_id
+
 logger = logging.getLogger(__name__)
 
 
@@ -37,7 +39,7 @@ class FreeTextResponseViewMixin(
         Build a context dictionary to render the student view
         """
 
-        student_id_test = self.get_student_id()
+        user_is_admin = user_by_anonymous_id(self.get_student_id()).is_staff
 
         context = context or {}
         context = dict(context)
@@ -54,7 +56,7 @@ class FreeTextResponseViewMixin(
             'word_count_message': self._get_word_count_message(),
             'display_other_responses': self.display_other_student_responses,
             'other_responses': self.get_other_answers(),
-            'student_id_test': student_id_test,
+            'user_is_admin': user_is_admin,
             'user_alert': '',
             'submitted_message': '',
         })
