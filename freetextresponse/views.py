@@ -258,7 +258,7 @@ class FreeTextResponseViewMixin(
                 (not self._word_count_valid())
         ):
             word_count_message = self._get_word_count_message()
-            result = "Invalid Word Count. {word_count_message}".format(
+            result = "{word_count_message}".format(
                 word_count_message=word_count_message,
             )
         return result

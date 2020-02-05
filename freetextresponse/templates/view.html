@@ -42,6 +42,7 @@
                 <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>
                 {% for response in other_responses %}
                     <tr>
+                        <td>{{ forloop.counter1 }}</td>
                         <td>
                             {{ response.student_email }}
                         </td>

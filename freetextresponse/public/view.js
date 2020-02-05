@@ -65,8 +65,8 @@ function FreeTextResponseView(runtime, element) {
         console.log("get!Student!Responses!Html!!!!!!!!!!!!!!!!!!");
         var html = '';
         var noResponsesText = responseList.data('noresponse');
-        responses.forEach(function (item) {
-            html += '<tr class=""><td>' + item.student_email + '</td><td>' + item.answer + '</td></tr>';
+        responses.forEach(function (item, index, array) {
+            html += '<tr class="">' + '<td>' + (index+1) + '</td><td>' + item.student_email + '</td><td>' + item.answer + '</td></tr>';
         });
         // html = html || '<li class="no-response">' + noResponsesText + '</li>';
         html = html || '<tr class=""><td colspan="2">' + noResponsesText + '</td></tr>';
