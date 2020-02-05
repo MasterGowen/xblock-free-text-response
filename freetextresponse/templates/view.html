@@ -39,10 +39,10 @@
             <p class="responses-title">Ответы пользователей</p>
 
             <table class="response-list">
-                <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>
+{#                <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>#}
                 {% for response in other_responses %}
                     <tr>
-                        <td>{{ forloop.counter1 }}</td>
+                        <td>{{ forloop.counter }}</td>
                         <td>
                             {{ response.student_email }}
                         </td>
