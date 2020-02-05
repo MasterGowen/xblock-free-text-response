@@ -19,7 +19,7 @@
     <div class="capa_alert submission-received">{{ submitted_message }}</div>
     <div class="action">
         {% if not is_past_due %}
-            <button class="check Submit {{ nodisplay_class }}" data-checking="{% trans "Checking..." %}" data-value={% trans "Submit" %}>
+            <button class="check Submit {{ nodisplay_class }}" data-checking="Отправка ..." data-value={% trans "Submit" %}>
                 {% trans "Submit" %}
             </button>
 {#            <button class="save {{ nodisplay_class }}" data-checking="{% trans "Checking..." %}" data-value={% trans "Save" %}>#}
@@ -38,8 +38,8 @@
             </button>
             <p class="responses-title">Ответы пользователей</p>
 
-            <table>
-{#                <tr><td colspan="2" data-noresponse="{% trans "No responses to show at this time" %}"></td></tr>#}
+            <table class="response-list">
+                <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>
                 {% for response in other_responses %}
                     <tr>
                         <td>
