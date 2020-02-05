@@ -299,15 +299,13 @@ class FreeTextResponseViewMixin(
         """
         Determine if a user may submit a response
         """
-        return True
-
-        # if self.is_past_due():
-        #     return False
-        # if self.max_attempts == 0:
-        #     return True
-        # if self.count_attempts < self.max_attempts:
-        #     return True
-        # return False
+        if self.is_past_due():
+            return False
+        if self.max_attempts == 0:
+            return True
+        if self.count_attempts < self.max_attempts:
+            return True
+        return False
 
     def _generate_validation_message(self, text):
         """
