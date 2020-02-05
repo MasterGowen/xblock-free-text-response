@@ -13,6 +13,8 @@ from xblock.fields import List
 from xblock.fields import Scope
 from xblock.fields import String
 
+from student.models import CourseEnrollment, user_by_anonymous_id
+
 MAX_RESPONSES = 3
 
 
@@ -133,6 +135,7 @@ class FreeTextResponseModelMixin(object):
             return
 
         student_id = self.get_student_id()
+
         # remove any previous answers the student submitted
         for index, response in enumerate(self.displayable_answers):
             if response['student_id'] == student_id:
