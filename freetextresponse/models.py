@@ -69,7 +69,7 @@ class FreeTextResponseModelMixin(object):
     )
     max_attempts = Integer(
         display_name='Maximum Number of Attempts',
-        default=1,
+        default=555,
         values={'min': 1},
         scope=Scope.settings,
     )
