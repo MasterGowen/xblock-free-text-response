@@ -140,7 +140,7 @@ class FreeTextResponseModelMixin(object):
         for index, response in enumerate(self.displayable_answers):
             if response['student_id'] == student_id:
                 del self.displayable_answers[index]
-                break
+                # break
 
         student_email = user_by_anonymous_id(student_id)
 
