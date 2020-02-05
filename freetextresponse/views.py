@@ -154,7 +154,7 @@ class FreeTextResponseViewMixin(
         they have used if applicable
         """
         result = ''
-        if self.max_attempts > 0:
+        if self.max_attempts > 0 and self.count_attempts >= self.max_attempts:
             result = 'Ваш отзыв отправлен'
         return result
 
