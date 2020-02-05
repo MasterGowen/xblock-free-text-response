@@ -155,12 +155,7 @@ class FreeTextResponseViewMixin(
         """
         result = ''
         if self.max_attempts > 0:
-            result = ('You have used {count_attempts} of {max_attempts} submission' +
-                      'You have used {count_attempts} of {max_attempts} submissions' +
-                      str(self.max_attempts)).format(
-                count_attempts=self.count_attempts,
-                max_attempts=self.max_attempts,
-            )
+            result = 'Ваш отзыв отправлен'
         return result
 
     def _get_indicator_visibility_class(self):
@@ -177,14 +172,7 @@ class FreeTextResponseViewMixin(
         """
         Returns the word count message
         """
-        result = ("Your response must be " +
-                  "between {min} and {max} word." +
-                  "Your response must be " +
-                  "between {min} and {max} words." +
-                  str(self.max_word_count)).format(
-            min=self.min_word_count,
-            max=self.max_word_count,
-        )
+        result = "Слишком короткое сообщение"
         return result
 
     def get_other_answers(self):

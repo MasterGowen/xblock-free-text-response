@@ -81,7 +81,7 @@ class FreeTextResponseModelMixin(object):
     )
     min_word_count = Integer(
         display_name='Minimum Word Count',
-        default=2,
+        default=1,
         values={'min': 1},
         scope=Scope.settings,
     )
