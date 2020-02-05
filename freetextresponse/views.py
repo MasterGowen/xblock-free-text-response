@@ -221,8 +221,8 @@ class FreeTextResponseViewMixin(
             # self.count_attempts += 1
             self._compute_score()
             # display_other_responses = self.display_other_student_responses
-            if data.get('can_record_response'):
-                self.store_student_response()
+            # if data.get('can_record_response'):
+            self.store_student_response()
         result = {
             'status': 'success',
             'problem_progress': self._get_problem_progress(),
