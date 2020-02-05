@@ -152,8 +152,10 @@ class FreeTextResponseModelMixin(object):
 
         # Want to store extra response so student can still see
         # MAX_RESPONSES answers if their answer is in the pool.
-        response_index = -(MAX_RESPONSES + 1)
-        self.displayable_answers = self.displayable_answers[response_index:]
+
+        # ЭТО ГРАНИЧЕНИЕ НА КОЛИЧЕСТВО ПОКАЗЫВАЕМЫХ ОТВЕТОВ
+        # response_index = -(MAX_RESPONSES + 1)
+        # self.displayable_answers = self.displayable_answers[response_index:]
 
     def max_score(self):
         """
@@ -167,6 +169,7 @@ class FreeTextResponseModelMixin(object):
 
     def _compute_score(self):
         """
+        Computes and publishes the user's core for the XBlock
         Computes and publishes the user's core for the XBlock
         based on their answer
         """

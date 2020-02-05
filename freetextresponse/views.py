@@ -186,11 +186,13 @@ class FreeTextResponseViewMixin(
         Does not return answers the student had submitted.
         """
         student_id = self.get_student_id()
+
         display_other_responses = self.display_other_student_responses
         shouldnt_show_other_responses = not display_other_responses
         student_answer_incorrect = self._determine_credit() == Credit.zero
         if student_answer_incorrect or shouldnt_show_other_responses:
             return []
+
         return_list = [
             response
             for response in self.displayable_answers
@@ -211,7 +213,7 @@ class FreeTextResponseViewMixin(
             self.student_answer = smart_text(data['student_answer'])
             # Counting the attempts and publishing a score
             # even if word count is invalid.
-            self.count_attempts += 1
+            # self.count_attempts += 1
             self._compute_score()
             display_other_responses = self.display_other_student_responses
             if display_other_responses and data.get('can_record_response'):
