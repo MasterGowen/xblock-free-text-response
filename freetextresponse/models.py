@@ -131,8 +131,8 @@ class FreeTextResponseModelMixin(object):
         answer to the end of the list.
         """
         # if the answer is wrong, do not display it
-        if self.score != Credit.full.value:
-            return
+        # if self.score != Credit.full.value:
+        #     return
 
         student_id = self.get_student_id()
 
