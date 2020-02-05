@@ -8,7 +8,6 @@
 function FreeTextResponseView(runtime, element) {
     /* eslint-enable no-unused-vars */
     'use strict';
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
 
     var $ = window.jQuery;
     var $element = $(element);

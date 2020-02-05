@@ -218,8 +218,8 @@ class FreeTextResponseViewMixin(
             # even if word count is invalid.
             # self.count_attempts += 1
             self._compute_score()
-            display_other_responses = self.display_other_student_responses
-            if display_other_responses and data.get('can_record_response'):
+            # display_other_responses = self.display_other_student_responses
+            if data.get('can_record_response'):
                 self.store_student_response()
         result = {
             'status': 'success',
@@ -232,7 +232,7 @@ class FreeTextResponseViewMixin(
                 ignore_attempts=True,
             ),
             'other_responses': self.get_other_answers(),
-            'display_other_responses': self.display_other_student_responses,
+            # 'display_other_responses': self.display_other_student_responses,
             'visibility_class': self._get_indicator_visibility_class(),
         }
         return result
