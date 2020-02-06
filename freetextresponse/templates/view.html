@@ -1,28 +1,15 @@
 <div class="freetextresponse xmodule_display xmodule_CapaModule problem">
-{#    <h2 class="problem-header">{{ display_name }}</h2>#}
-{#    <div class="problem-progress">{{ problem_progress }}</div>#}
-{#    <p>{{ prompt|safe }}</p>#}
-{#    <div class="word-count-message">{{ word_count_message }}</div>#}
     <div class="capa_inputtype textline">
         <div class="user_input {{ indicator_class }}">
             <textarea class="student_answer" rows="20">{{ student_answer }}</textarea>
             <span class="status {{ visibility_class }}" aria-describedby="student_answer"></span>
         </div>
     </div>
-
-{#    {% if display_other_responses %}#}
-{#        <input class="messageCheckbox" type="checkbox" checked>#}
-{#            <span>{% trans "Allow my response to possibly be visible by other learners after submitting their response" %}</span>#}
-{#        <br>#}
-{#    {% endif %}#}
     <div class="action">
         {% if not is_past_due %}
-            <button class="check Submit {{ nodisplay_class }}" data-checking="Отправка ..." data-value={% trans "Submit" %}>
+            <button class="check Submit {{ nodisplay_class }}" data-checking="Отправка ..." data-value="Submit">
                 Отправить
             </button>
-{#            <button class="save {{ nodisplay_class }}" data-checking="{% trans "Checking..." %}" data-value={% trans "Save" %}>#}
-{#                {% trans "Save" %}#}
-{#            </button>#}
         {% endif %}
         <div class="used-attempts-feedback" aria-live="polite">{{ used_attempts_feedback }}</div>
     </div>
