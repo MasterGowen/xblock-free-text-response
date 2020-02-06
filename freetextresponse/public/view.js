@@ -31,6 +31,8 @@ function FreeTextResponseView(runtime, element) {
     var problemProgressId = xblockId + '_problem_progress';
     var usedAttemptsFeedbackId = xblockId + '_used_attempts_feedback';
 
+    $element.find('.edit-button').hide();
+
     if (typeof $xblocksContainer.data(cachedAnswerId) !== 'undefined') {
         textareaStudentAnswer.text($xblocksContainer.data(cachedAnswerId));
         problemProgress.text($xblocksContainer.data(problemProgressId));
