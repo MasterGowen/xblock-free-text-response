@@ -11,8 +11,10 @@ from xblock.fragment import Fragment
 
 from student.models import CourseEnrollment, user_by_anonymous_id
 
+
 def student_id(self):
     return self.xmodule_runtime.anonymous_student_id
+
 
 class XBlockFragmentBuilderMixin(object):
     """
@@ -43,7 +45,7 @@ class XBlockFragmentBuilderMixin(object):
         Build the fragment for the default student view
         """
 
-        if student_id(self) != "student":
+        if student_id(self) == "student":
             studio_template = 'studio_view.html'
             rendered_template = ''
             if studio_template:  # pragma: no cover
