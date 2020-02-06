@@ -9,6 +9,10 @@ from __future__ import absolute_import
 from xblock.core import XBlock
 from xblock.fragment import Fragment
 
+from student.models import CourseEnrollment, user_by_anonymous_id
+
+def student_id(self):
+    return self.xmodule_runtime.anonymous_student_id
 
 class XBlockFragmentBuilderMixin(object):
     """
@@ -38,6 +42,20 @@ class XBlockFragmentBuilderMixin(object):
         """
         Build the fragment for the default student view
         """
+
+        if student_id(self) != "student":
+            studio_template = 'studio_view.html'
+            rendered_template = ''
+            if studio_template:  # pragma: no cover
+                template = 'templates/' + studio_template
+                rendered_template = self.loader.render_django_template(
+                    template,
+                    context=context,
+                )
+            fragment = Fragment(rendered_template)
+            fragment.initialize_js('FreeTextResponseView')
+            return fragment
+
         template = self.template
         context = self.provide_context(context)
         static_css = self.static_css or []
