@@ -155,7 +155,7 @@ class FreeTextResponseViewMixin(
         """
         result = ''
         if self.max_attempts > 0 and self.count_attempts >= self.max_attempts:
-            result = 'Ваш отзыв отправлен'
+            result = 'Ваш ответ отправлен'
         return result
 
     def _get_indicator_visibility_class(self):

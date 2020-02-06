@@ -16,7 +16,6 @@
 {#            <span>{% trans "Allow my response to possibly be visible by other learners after submitting their response" %}</span>#}
 {#        <br>#}
 {#    {% endif %}#}
-    <div class="capa_alert submission-received">{{ submitted_message }}</div>
     <div class="action">
         {% if not is_past_due %}
             <button class="check Submit {{ nodisplay_class }}" data-checking="Отправка ..." data-value={% trans "Submit" %}>
