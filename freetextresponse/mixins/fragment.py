@@ -89,21 +89,33 @@ class XBlockFragmentBuilderMixin(object):
         fragment.initialize_js('FreeTextResponseView')
         return fragment
 
-    @XBlock.supports('multi_device')
+    # @XBlock.supports('multi_device')
     def studio_view(self, context=None):
-        """
-        Build the fragment for the default student view
-        """
-        template = self.template
-        context = self.provide_context(context)
-        static_css = self.static_css or []
-        static_js = self.static_js or []
-        js_init = self.static_js_init
-        fragment = self.build_fragment(
-            template=template,
-            context=context,
-            css=static_css,
-            js=static_js,
-            js_init=js_init,
-        )
+        studio_template = 'studio_view.html'
+        rendered_template = ''
+        if studio_template:  # pragma: no cover
+            template = 'templates/' + studio_template
+            rendered_template = self.loader.render_django_template(
+                template,
+                context=context,
+            )
+        fragment = Fragment(rendered_template)
+        fragment.initialize_js('FreeTextResponseView')
         return fragment
+
+    #     """
+    #     Build the fragment for the default student view
+    #     """
+    #     template = self.template
+    #     context = self.provide_context(context)
+    #     static_css = self.static_css or []
+    #     static_js = self.static_js or []
+    #     js_init = self.static_js_init
+    #     fragment = self.build_fragment(
+    #         template=template,
+    #         context=context,
+    #         css=static_css,
+    #         js=static_js,
+    #         js_init=js_init,
+    #     )
+    #     return fragment
