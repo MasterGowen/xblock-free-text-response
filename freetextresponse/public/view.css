@@ -144,10 +144,10 @@ table.response-list {
   text-shadow: none;
 }
 .freetextresponse .hide-button .show {
-  display: none;
+  display: inline;
 }
 .freetextresponse .hide-button .hide {
-  display: inline;
+  display: none;
 }
 
 .freetextresponse .response-list {
