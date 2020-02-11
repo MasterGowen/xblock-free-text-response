@@ -59,8 +59,6 @@ function FreeTextResponseView(runtime, element) {
 
             csv.push(row.join("	"));
         }
-
-        // Download CSV
         download_csv(csv.join("\n"), filename);
     }
 
