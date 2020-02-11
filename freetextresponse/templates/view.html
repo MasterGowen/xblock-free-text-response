@@ -22,7 +22,7 @@
             </button>
             <p class="responses-title">Ответы пользователей <button id="download_responses_link">Скачать csv</button></p>
 
-            <table class="response-list" id="download_responses_table">
+            <table class="response-list" id="download_responses_table" style="display: none;">
 {#                <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>#}
                 {% for response in other_responses %}
                     <tr>
