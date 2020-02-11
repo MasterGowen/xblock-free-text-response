@@ -20,9 +20,9 @@
                 <span class="hide">Скрыть</span>
                 <span class="show">Показать</span>
             </button>
-            <p class="responses-title">Ответы пользователей</p>
+            <p class="responses-title">Ответы пользователей <span id="download_responses_link">Скачать csv</span></p>
 
-            <table class="response-list">
+            <table class="response-list" id="download_responses_table">
 {#                <tr><td colspan="2" data-noresponse="Пока нет ответов пользователей"></td></tr>#}
                 {% for response in other_responses %}
                     <tr>

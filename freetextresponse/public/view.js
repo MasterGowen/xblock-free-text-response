@@ -31,6 +31,48 @@ function FreeTextResponseView(runtime, element) {
     var problemProgressId = xblockId + '_problem_progress';
     var usedAttemptsFeedbackId = xblockId + '_used_attempts_feedback';
 
+    var download_responses_btn = $element.find('#download_responses_link');
+
+    function download_csv(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        // CSV FILE
+        csvFile = new Blob([csv], {type: "text/csv"});
+        downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+
+    function export_table_to_csv(html, filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("table tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+
+            for (var j = 0; j < cols.length; j++)
+                row.push(cols[j].innerText);
+
+            csv.push(row.join("	"));
+        }
+
+        // Download CSV
+        download_csv(csv.join("\n"), filename);
+    }
+
+    $(download_responses_btn).click(function() {
+        var html = $(responseList).html();
+        export_table_to_csv(html, "responses.csv");
+    });
+
+    document.querySelector("button").addEventListener("click", function () {
+
+    });
+
     $element.find('.edit-button').hide();
 
     if (typeof $xblocksContainer.data(cachedAnswerId) !== 'undefined') {
@@ -68,7 +110,7 @@ function FreeTextResponseView(runtime, element) {
         var html = '';
         var noResponsesText = responseList.data('noresponse');
         responses.forEach(function (item, index, array) {
-            html += '<tr class="">' + '<td>' + (index+1) + '</td><td>' + item.student_email + '</td><td>' + item.answer + '</td></tr>';
+            html += '<tr class="">' + '<td>' + (index + 1) + '</td><td>' + item.student_email + '</td><td>' + item.answer + '</td></tr>';
         });
         // html = html || '<li class="no-response">' + noResponsesText + '</li>';
         html = html || '<tr class=""><td colspan="2">' + noResponsesText + '</td></tr>';
