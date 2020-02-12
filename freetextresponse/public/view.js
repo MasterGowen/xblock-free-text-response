@@ -67,10 +67,6 @@ function FreeTextResponseView(runtime, element) {
         export_table_to_csv(html, "responses.csv");
     });
 
-    console.log(element);
-    console.log($('.edit-button', element));
-    $('.edit-button', element).hide();
-
     if (typeof $xblocksContainer.data(cachedAnswerId) !== 'undefined') {
         textareaStudentAnswer.text($xblocksContainer.data(cachedAnswerId));
         problemProgress.text($xblocksContainer.data(problemProgressId));
