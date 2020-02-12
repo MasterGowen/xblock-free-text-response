@@ -52,11 +52,9 @@ class FreeTextResponseViewMixin(
         Build a context dictionary to render the student view
         """
         if self.get_student_id() != "student":
-            user_is_admin = user_by_anonymous_id(self.get_student_id()).is_staff
+            user_is_admin = self.is_course_staff(user_by_anonymous_id(self.get_student_id()), self.course_id)
         else:
             user_is_admin = True
-
-        is_admin_test = self.is_course_staff(user_by_anonymous_id(self.get_student_id()), self.course_id)
 
         context = context or {}
         context = dict(context)
@@ -76,8 +74,6 @@ class FreeTextResponseViewMixin(
             'user_is_admin': user_is_admin,
             'user_alert': '',
             'submitted_message': '',
-            'course_id': self.xmodule_runtime.course_id,
-            'is_admin_test': is_admin_test,
         })
         return context
 
