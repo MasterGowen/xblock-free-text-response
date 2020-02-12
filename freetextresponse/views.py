@@ -13,10 +13,12 @@ from .mixins.dates import EnforceDueDates
 from .mixins.fragment import XBlockFragmentBuilderMixin
 from .models import Credit
 from .models import MAX_RESPONSES
-
+from opaque_keys.edx.keys import CourseKey, UsageKey
 from django.utils.encoding import smart_text
 
 from student.models import CourseEnrollment, user_by_anonymous_id
+from student import auth
+from student.roles import CourseStaffRole
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +36,16 @@ class FreeTextResponseViewMixin(
     loader = ResourceLoader(__name__)
     static_js_init = 'FreeTextResponseView'
 
+    # def course_id(self):
+    #     return self._serialize_opaque_key(self.xmodule_runtime.course_id)  # pylint:disable=E1101
+
+    def is_course_staff(self, user, course_id):
+        """
+        Returns True if the user is the course staff
+        else Returns False
+        """
+        return auth.user_has_role(user, CourseStaffRole(CourseKey.from_string(course_id)))
+
     def provide_context(self, context=None):
         """
         Build a context dictionary to render the student view
@@ -42,6 +54,8 @@ class FreeTextResponseViewMixin(
             user_is_admin = user_by_anonymous_id(self.get_student_id()).is_staff
         else:
             user_is_admin = True
+
+        is_admin_test = self.is_course_staff(user_by_anonymous_id(self.get_student_id()), self.xmodule_runtime.course_id)
 
         context = context or {}
         context = dict(context)
@@ -61,8 +75,12 @@ class FreeTextResponseViewMixin(
             'user_is_admin': user_is_admin,
             'user_alert': '',
             'submitted_message': '',
+            'course_id': self.xmodule_runtime.course_id,
+            'is_admin_test': is_admin_test,
         })
         return context
+
+
 
     def _get_indicator_class(self):
         """
