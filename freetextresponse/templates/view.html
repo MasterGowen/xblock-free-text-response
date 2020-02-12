@@ -15,8 +15,9 @@
     </div>
 
     <div class="lol">
-            {{course_id}}
-            {{is_admin_test}}
+        <p>{{course_id}}</p>
+        <p>is_admin_test: {{is_admin_test}}</p>
+        <p>user_is_admin: {{ user_is_admin }}</p>
     </div>
     <div class="capa_alert user_alert">{{ user_alert }}</div>
     {% if user_is_admin %}
