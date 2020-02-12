@@ -67,11 +67,9 @@ function FreeTextResponseView(runtime, element) {
         export_table_to_csv(html, "responses.csv");
     });
 
-    document.querySelector("button").addEventListener("click", function () {
-
-    });
-
-    $element.find('.edit-button').hide();
+    console.log(element);
+    console.log($('.edit-button', element));
+    $('.edit-button', element).hide();
 
     if (typeof $xblocksContainer.data(cachedAnswerId) !== 'undefined') {
         textareaStudentAnswer.text($xblocksContainer.data(cachedAnswerId));
