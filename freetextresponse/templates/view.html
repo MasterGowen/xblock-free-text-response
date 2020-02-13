@@ -27,12 +27,8 @@
                 {% for response in other_responses %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>
-                            {{ response.student_email }}
-                        </td>
-                        <td>
-                            {{ response.answer }}
-                        </td>
+                        <td>{{ response.student_email }}</td>
+                        <td>{{ response.answer }}</td>
                     </tr>
                 {% empty %}
                     <td colspan="3" class="no-response">Пока нет ответов пользователей</td>
